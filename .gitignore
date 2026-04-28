@@ -1,0 +1,24 @@
+# Ignore history folder
+.history/
+
+# Node modules (لو عندك frontend)
+node_modules/
+
+# Environment variables
+.env
+
+# Logs
+*.log
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# IDE files
+.vscode/
+.idea/
+
+# Build / vendor (حسب المشروع)
+vendor/
+dist/
+build/git rm -r --cached .history
