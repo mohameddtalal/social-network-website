@@ -11,6 +11,10 @@ body{
     line-height: 17px;
     background-color: #e6eae8 !important;
 }
+a{
+    color:#20aae5;
+    text-decoration: none;
+}
 .top_bar{
     width:100%;
     min-width: 1050px;
@@ -144,6 +148,7 @@ textarea:focus{
     font-size: 15px;
     padding: 0px 5px;
     min-height: 75px;
+    cursor: pointer;
 
 }
 
@@ -158,4 +163,87 @@ textarea:focus{
 
 hr{
         border-top: 1px solid rgba(0, 0, 0, 0.3) !important;
+}
+
+#comment_iframe{
+    max-height: 250px;
+    width:100%;
+    margin-top:5px ;
+
+}
+
+.comment_section{
+    padding:0 5px 5px 5px;
+
+}
+.comment_section img{
+    margin: 0 3px 3px 3px;
+    border-radius: 3px;
+
+}
+
+#comment_form textarea{
+    border-color:#d3d3d3 ;
+    width:85%;
+    height: 35px;
+    border-radius: 5px;
+    color:#616060;
+    font-size: 14px;
+    margin: 3px 3px 3px 5px;  
+}
+
+#comment_form input[type="submit"]{
+  border:none;
+  background-color: #20aae5;
+  color:#156588;
+  border-radius: 5px;
+  width: 13%;
+  height: 35px;
+  margin-top: 3px;
+  position: absolute;
+  font-family: Bellota-BoldItalic ,sans-serif;
+text-shadow: #73b6e2 0.5px 0.5px 0px;
+}
+
+.newsfeedPostOptions{
+    padding: 0px;
+    text-decoration: none;
+    color:#20aae5;
+    border: none;
+
+}
+
+.newsfeedPostOptions iframe{
+    border:0px;
+    height: 14px;
+    width: 120px;
+    background-color: transparent !important;
+
+
+}
+
+
+.comment_like{
+    background-color: transparent !important;
+    border: none;
+    font-size: 14px;
+    color: #3498db;
+    padding: 0;
+    height: auto;
+    width: auto;
+    margin: 0;
+    display: inline-block;
+
+}
+
+.like_value{
+    display: inline-block;
+    font-size: 14px;
+    color: #3498db;
+
+}
+
+.newsfeedPostOptions form{
+    position: absolute;
+    top: 0;
 }
