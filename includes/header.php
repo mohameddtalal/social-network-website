@@ -3,6 +3,7 @@ require_once("./config/config.php");
 require_once("includes/classes/User.php");
 require_once("includes/classes/Post.php");
 require_once("includes/classes/Message.php");
+require_once("includes/classes/Notification.php");
 
 
 if(isset($_SESSION['username'])){
@@ -39,11 +40,32 @@ if(isset($_SESSION['username'])){
         <div class="logo">
             <a href="index.php">Swirlfeed!</a>
         </div>
+
+        <div class="search">
+            <form action="search.php" method="GET" name="search_form">
+                <input type="text" onkeyup="getLiveSearchUsers(this.value,'<?php echo $userLoggedIn; ?>')" name="q" placeholder="Search..." autocomplete="off" id="search_text_input">
+                <div class="button_holder">
+                    <img src="assets/images/icons/magnifying_glass.png">
+                </div>
+            </form>
+            <div class="search_results">
+
+            </div>
+            <div class="search_results_footer_empty">
+
+            </div>
+        </div>
         <nav>
             <?php
                 //unread messages 
                 $messages= new Message($con,$userLoggedIn);
                 $num_messages=$messages->getUnreadNumber();
+                //unread notifications 
+                $notifications= new Notification($con,$userLoggedIn);
+                $num_notifications=$notifications->getUnreadNumber();
+                //friend requests 
+                $user_obj= new User($con,$userLoggedIn);
+                $num_requests=$user_obj->getNumberOfFriendRequest();
             ?>
             <a href="<?php echo $userLoggedIn ?>">
                 <?php
@@ -60,13 +82,21 @@ if(isset($_SESSION['username'])){
                  echo '<span class="notification_badge" id="unread_message">'.$num_messages .'</span> ';
                 ?>
             </a>
-            <a href="#">
+            <a href="javascript:void(0);" onclick="getDropdownData('<?php echo $userLoggedIn; ?>','notification')">
                 <i class="fa fa-bell fa-lg"></i>
+                  <?php
+                if ($num_notifications >0)
+                 echo '<span class="notification_badge" id="unread_notification">'.$num_notifications .'</span> ';
+                ?>
             </a>
               <a href="requests.php">
                 <i class="fa fa-users fa-lg"></i>
+                 <?php
+                if ($num_requests >0)
+                 echo '<span class="notification_badge" id="unread_request">'.$num_requests .'</span> ';
+                ?>
             </a>
-            <a href="#">
+            <a href="settings.php">
                 <i class="fa fa-cog fa-lg"></i>
             </a>
              <a href="includes/handlers/logout.php">
